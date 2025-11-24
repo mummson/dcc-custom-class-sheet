@@ -1,0 +1,68 @@
+{
+  "DCCCS.TabLabel": "Custom Class",
+  "DCCCS.Actions.Purge": "Purge (CUSTOMCLASS)",
+  "DCCCS.Actions.PurgeHint": "Remove all (CUSTOMCLASS) naming skills from this actor",
+  "DCCCS.Empty.Title": "No prefixed skills found on this actor.",
+  "DCCCS.Empty.Hint1": "Rename this tab by adding a Skill named (CUSTOMCLASS)<Your Label>.",
+  "DCCCS.Empty.Hint2": "List skills inside this tab by naming them like (Barbarian^10)Rage or (Ranger)Track.",
+  "DCCCS.Empty.Hint3": "Weight is optional; higher numbers sort to the top within a group.",
+  "DCCCS.Empty.Hint4": "Add an icon to the tab by including <p>icon: fa-axe-battle</p> in the (CUSTOMCLASS) skill's description.",
+  "DCCCS.OccupationalSkills": "Occupational Skills",
+  "DCCCS.Tooltip.HeaderIcon": "Custom Class",
+  "DCCCS.Chat.Post": "Post to chat",
+  "DCCCS.LaunchBuilder": "Create Custom Class",
+  "DCCCS.ManualSetup": "Manual Setup Instructions",
+  
+  "DCCCS.Builder.Title": "Custom Class Builder",
+  "DCCCS.Builder.Step1": "Basics",
+  "DCCCS.Builder.Step2": "Skills",
+  "DCCCS.Builder.Step3": "Preview",
+  
+  "DCCCS.Builder.ClassName": "Class Name",
+  "DCCCS.Builder.ClassNamePlaceholder": "e.g., Barbarian, Blood Mage, Ranger...",
+  "DCCCS.Builder.ClassNameHint": "This will be the name of your custom class and the folder containing its skills.",
+  
+  "DCCCS.Builder.Icon": "Tab Icon",
+  "DCCCS.Builder.IconHint": "Choose an icon to represent this class on the character sheet tab.",
+  "DCCCS.Builder.IconCustom": "Custom Icon...",
+  "DCCCS.Builder.IconCustomHint": "Enter a FontAwesome icon class (e.g., fa-dice-d20). Browse available icons:",
+  "DCCCS.Builder.IconBrowse": "Browse FontAwesome Icons",
+  
+  "DCCCS.Builder.SkillName": "Skill Name",
+  "DCCCS.Builder.SkillDescription": "Description (supports HTML formatting)...",
+  "DCCCS.Builder.Weight": "Weight",
+  "DCCCS.Builder.WeightHint": "Higher weights appear first in the list (0 = alphabetical order)",
+  "DCCCS.Builder.NoSkills": "No skills added yet. Click the button below to add your first skill.",
+  "DCCCS.Builder.AddSkill": "Add Skill",
+  "DCCCS.Builder.MoveUp": "Move Up",
+  "DCCCS.Builder.MoveDown": "Move Down",
+  "DCCCS.Builder.Remove": "Remove",
+  
+  "DCCCS.Builder.Next": "Next",
+  "DCCCS.Builder.Back": "Back",
+  "DCCCS.Builder.Preview": "Preview",
+  "DCCCS.Builder.Create": "Create Class",
+  
+  "DCCCS.Builder.PreviewTitle": "Preview Your Custom Class",
+  "DCCCS.Builder.PreviewHint": "Your class will be created as a folder in the Items directory with the following structure:",
+  
+  "DCCCS.Builder.ParentFolder": "Parent Folder (Optional)",
+  "DCCCS.Builder.TopLevel": "Top Level (No Parent)",
+  "DCCCS.Builder.ParentFolderHint": "Choose a parent folder to organize your custom class, or leave blank to create at the top level.",
+  
+  "DCCCS.Builder.NextSteps": "What happens next?",
+  "DCCCS.Builder.NextStep1": "A new folder will be created in your Items directory",
+  "DCCCS.Builder.NextStep2": "The folder will contain the naming skill and all class skills",
+  "DCCCS.Builder.NextStep3": "Drag the entire folder onto an actor to apply the custom class",
+  
+  "DCCCS.Builder.Validation.ClassName": "Please enter a class name before continuing.",
+  "DCCCS.Builder.Validation.NoSkills": "Please add at least one skill before continuing.",
+  "DCCCS.Builder.Validation.UnnamedSkills": "All skills must have a name. Please fill in any empty skill names.",
+  
+  "DCCCS.Builder.Success": "Custom class '{className}' created successfully with {count} skills!",
+  "DCCCS.Builder.Error": "Failed to create custom class. Check the console for details.",
+  
+  "DCCCS.Builder.ApplyTitle": "Apply to Actor?",
+  "DCCCS.Builder.ApplyContent": "Would you like to apply the '{className}' class to this actor immediately?",
+  "DCCCS.Builder.Applied": "'{className}' has been applied to this actor!"
+}

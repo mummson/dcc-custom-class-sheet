@@ -1,0 +1,181 @@
+{{!-- DCC Custom Class Builder Template --}}
+{{!-- Three-step wizard for creating custom classes --}}
+
+<form class="dcc-class-builder-form">
+  {{!-- Step Indicator --}}
+  <div class="builder-steps">
+    <div class="step {{#if (eq step 1)}}active{{/if}} {{#if (gt step 1)}}complete{{/if}}">
+      <div class="step-number">1</div>
+      <div class="step-label">{{localize "DCCCS.Builder.Step1"}}</div>
+    </div>
+    <div class="step {{#if (eq step 2)}}active{{/if}} {{#if (gt step 2)}}complete{{/if}}">
+      <div class="step-number">2</div>
+      <div class="step-label">{{localize "DCCCS.Builder.Step2"}}</div>
+    </div>
+    <div class="step {{#if (eq step 3)}}active{{/if}}">
+      <div class="step-number">3</div>
+      <div class="step-label">{{localize "DCCCS.Builder.Step3"}}</div>
+    </div>
+  </div>
+
+  {{!-- Step 1: Basics --}}
+  {{#if (eq step 1)}}
+    <div class="builder-step step-basics">
+      <div class="form-group">
+        <label for="className">{{localize "DCCCS.Builder.ClassName"}}</label>
+        <input type="text" name="className" id="className" value="{{className}}" placeholder="{{localize 'DCCCS.Builder.ClassNamePlaceholder'}}" autofocus />
+        <p class="hint">{{localize "DCCCS.Builder.ClassNameHint"}}</p>
+      </div>
+
+      <div class="form-group">
+        <label for="iconClass">{{localize "DCCCS.Builder.Icon"}}</label>
+        <div class="icon-preview">
+          <i class="{{iconPreview}}"></i>
+          <span>{{iconClass}}</span>
+        </div>
+        <select name="iconClass" id="iconClass">
+          {{#each commonIcons as |icon|}}
+            <option value="{{icon.class}}" {{#if (eq ../iconClass icon.class)}}selected{{/if}}>
+              {{icon.label}}
+            </option>
+          {{/each}}
+          <option value="">{{localize "DCCCS.Builder.IconCustom"}}</option>
+        </select>
+        <div class="custom-icon-input" style="{{#unless customIconMode}}display:none;{{/unless}}">
+          <input type="text" name="customIconClass" id="customIconClass" value="{{iconClass}}" placeholder="fa-dice-d20" />
+          <p class="hint">
+            {{localize "DCCCS.Builder.IconCustomHint"}}
+            <a href="https://fontawesome.com/search?o=r&m=free" target="_blank" rel="noopener">
+              <i class="fas fa-external-link"></i> {{localize "DCCCS.Builder.IconBrowse"}}
+            </a>
+          </p>
+        </div>
+        <p class="hint">{{localize "DCCCS.Builder.IconHint"}}</p>
+      </div>
+
+      <div class="form-group buttons">
+        <button type="button" class="dialog-button" data-action="nextStep">
+          {{localize "DCCCS.Builder.Next"}} <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  {{/if}}
+
+  {{!-- Step 2: Skills --}}
+  {{#if (eq step 2)}}
+    <div class="builder-step step-skills">
+      <div class="skills-list">
+        {{#if hasSkills}}
+          {{#each skills as |skill|}}
+            <div class="skill-editor" data-skill-id="{{skill.id}}">
+              <div class="skill-header">
+                <input type="text" data-skill-field="name" value="{{skill.name}}" placeholder="{{localize 'DCCCS.Builder.SkillName'}}" />
+                <div class="skill-actions">
+                  <button type="button" class="skill-btn" data-action="moveSkillUp" title="{{localize 'DCCCS.Builder.MoveUp'}}">
+                    <i class="fas fa-arrow-up"></i>
+                  </button>
+                  <button type="button" class="skill-btn" data-action="moveSkillDown" title="{{localize 'DCCCS.Builder.MoveDown'}}">
+                    <i class="fas fa-arrow-down"></i>
+                  </button>
+                  <button type="button" class="skill-btn danger" data-action="removeSkill" title="{{localize 'DCCCS.Builder.Remove'}}">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="skill-body">
+                <textarea data-skill-field="description" rows="2" placeholder="{{localize 'DCCCS.Builder.SkillDescription'}}">{{skill.description}}</textarea>
+                <div class="skill-weight">
+                  <label>
+                    {{localize "DCCCS.Builder.Weight"}}
+                    <input type="number" data-skill-field="weight" value="{{skill.weight}}" min="0" max="999" />
+                  </label>
+                  <span class="hint">{{localize "DCCCS.Builder.WeightHint"}}</span>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        {{else}}
+          <p class="no-skills">{{localize "DCCCS.Builder.NoSkills"}}</p>
+        {{/if}}
+      </div>
+
+      <div class="form-group">
+        <button type="button" class="dialog-button add-skill" data-action="addSkill">
+          <i class="fas fa-plus"></i> {{localize "DCCCS.Builder.AddSkill"}}
+        </button>
+      </div>
+
+      <div class="form-group buttons">
+        <button type="button" class="dialog-button secondary" data-action="prevStep">
+          <i class="fas fa-arrow-left"></i> {{localize "DCCCS.Builder.Back"}}
+        </button>
+        <button type="button" class="dialog-button" data-action="nextStep">
+          {{localize "DCCCS.Builder.Preview"}} <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  {{/if}}
+
+  {{!-- Step 3: Preview --}}
+  {{#if (eq step 3)}}
+    <div class="builder-step step-preview">
+      <div class="preview-section">
+        <h3>{{localize "DCCCS.Builder.PreviewTitle"}}</h3>
+        <p>{{localize "DCCCS.Builder.PreviewHint"}}</p>
+
+        <div class="folder-preview">
+          <div class="folder-header">
+            <i class="fas fa-folder"></i>
+            <strong>{{className}}</strong>
+          </div>
+          <ul class="item-list">
+            <li class="naming-item">
+              <i class="fas fa-tag"></i>
+              <span>(CUSTOMCLASS){{className}}</span>
+            </li>
+            {{#each sortedSkills as |skill|}}
+              <li>
+                <i class="fas fa-circle-notch"></i>
+                <span>({{../className}}{{#if skill.weight}}^{{skill.weight}}{{/if}}){{skill.name}}</span>
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="parentFolder">{{localize "DCCCS.Builder.ParentFolder"}}</label>
+        <select name="parentFolder" id="parentFolder">
+          <option value="">{{localize "DCCCS.Builder.TopLevel"}}</option>
+          {{#each itemFolders as |folder|}}
+            <option value="{{folder.id}}" {{#if (eq ../parentFolder folder.id)}}selected{{/if}}>
+              {{folder.name}}
+            </option>
+          {{/each}}
+        </select>
+        <p class="hint">{{localize "DCCCS.Builder.ParentFolderHint"}}</p>
+      </div>
+
+      <div class="info-box">
+        <i class="fas fa-info-circle"></i>
+        <div>
+          <p><strong>{{localize "DCCCS.Builder.NextSteps"}}</strong></p>
+          <ol>
+            <li>{{localize "DCCCS.Builder.NextStep1"}}</li>
+            <li>{{localize "DCCCS.Builder.NextStep2"}}</li>
+            <li>{{localize "DCCCS.Builder.NextStep3"}}</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="form-group buttons">
+        <button type="button" class="dialog-button secondary" data-action="prevStep">
+          <i class="fas fa-arrow-left"></i> {{localize "DCCCS.Builder.Back"}}
+        </button>
+        <button type="button" class="dialog-button primary" data-action="createClass">
+          <i class="fas fa-check"></i> {{localize "DCCCS.Builder.Create"}}
+        </button>
+      </div>
+    </div>
+  {{/if}}
+</form>

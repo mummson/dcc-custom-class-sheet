@@ -1,0 +1,8 @@
+{{!-- Sheet Tab Navigation with Icon Support --}}
+<nav class="sheet-tabs tabs">
+  {{#each tabs as |tab|}}
+    <a class="{{tab.cssClass}}" data-action="tab" data-group="{{tab.group}}" data-tab="{{tab.id}}" data-tooltip="{{localize tab.tooltip}}">
+      {{#if tab.icon}}<i class="{{tab.icon}}"></i> {{/if}}{{localize tab.label}}
+    </a>
+  {{/each}}
+</nav>

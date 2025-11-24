@@ -1,0 +1,306 @@
+/* DCC Custom Class Sheet — minimal, theme-friendly styles
+   Keep colors neutral so system themes remain in control. */
+
+.dcc-custom-class-sheet .ccc-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+
+/* Header */
+.dcc-custom-class-sheet .ccc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--color-border, rgba(0,0,0,.2));
+  padding-bottom: 0.25rem;
+}
+
+.dcc-custom-class-sheet .ccc-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dcc-custom-class-sheet .ccc-title h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.dcc-custom-class-sheet .ccc-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Buttons */
+.dcc-custom-class-sheet .ccc-btn,
+.dcc-custom-class-sheet .ccc-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid var(--color-border, rgba(0,0,0,.25));
+  background: var(--color-bg-alt, rgba(0,0,0,.05));
+  color: inherit;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.dcc-custom-class-sheet .ccc-icon-btn {
+  padding: 0.2rem 0.35rem;
+}
+
+.dcc-custom-class-sheet .ccc-btn:hover,
+.dcc-custom-class-sheet .ccc-icon-btn:hover {
+  filter: brightness(1.05);
+}
+
+/* Groups */
+.dcc-custom-class-sheet .ccc-group {
+  border: 1px solid var(--color-border, rgba(0,0,0,.15));
+  border-radius: 6px;
+  padding: 0.5rem;
+  background: var(--color-bg, transparent);
+}
+
+.dcc-custom-class-sheet .ccc-group + .ccc-group {
+  margin-top: 0.25rem;
+}
+
+.dcc-custom-class-sheet .ccc-group-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  border-bottom: 1px dashed var(--color-border, rgba(0,0,0,.15));
+  padding-bottom: 0.25rem;
+}
+
+/* Skill list */
+.dcc-custom-class-sheet .ccc-skill-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.35rem;
+}
+
+.dcc-custom-class-sheet .ccc-skill-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.3rem 0.4rem;
+  border: 1px solid var(--color-border, rgba(0,0,0,.1));
+  border-radius: 4px;
+  background: var(--color-bg-alt, rgba(0,0,0,.03));
+}
+
+.dcc-custom-class-sheet .ccc-skill-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dcc-custom-class-sheet .ccc-skill-name {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 32ch;
+}
+
+.dcc-custom-class-sheet .ccc-weight {
+  font-size: 0.85em;
+  opacity: 0.8;
+  margin-left: 0.25rem;
+}
+
+/* Tooltip bubble (HTML content) */
+.dcc-custom-class-sheet .ccc-tooltip {
+  position: absolute;
+  inset: auto auto 100% 0; /* default above, left aligned */
+  transform: translateY(-6px);
+  z-index: 40;
+
+  min-width: 16rem;
+  max-width: 32rem;
+  max-height: 50vh;
+  overflow: auto;
+
+  background: var(--color-bg, #fff);
+  color: inherit;
+  border: 1px solid var(--color-border, rgba(0,0,0,.2));
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+  border-radius: 6px;
+  padding: 0.5rem;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 120ms ease, visibility 120ms ease, transform 120ms ease;
+}
+
+.dcc-custom-class-sheet .ccc-tooltip.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-8px);
+}
+
+.dcc-custom-class-sheet .ccc-tooltip .ccc-tooltip-content :first-child {
+  margin-top: 0;
+}
+.dcc-custom-class-sheet .ccc-tooltip .ccc-tooltip-content :last-child {
+  margin-bottom: 0;
+}
+
+/* Empty state */
+.dcc-custom-class-sheet .ccc-empty {
+  border: 1px dashed var(--color-border, rgba(0,0,0,.25));
+  border-radius: 6px;
+  padding: 0.75rem;
+  background: var(--color-bg-alt, rgba(0,0,0,.03));
+}
+
+.dcc-custom-class-sheet .ccc-empty p {
+  margin: 0 0 0.5rem 0;
+}
+.dcc-custom-class-sheet .ccc-empty ul {
+  margin: 0.25rem 0 0 1rem;
+  padding: 0;
+}
+
+/* ========================================
+   Class Builder Dialog Styles
+   ======================================== */
+
+.dcc-class-builder {
+  display: flex;
+  flex-direction: column;
+}
+
+.dcc-class-builder .window-content {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.dcc-class-builder .dcc-class-builder-form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.dcc-class-builder .builder-steps {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  border-bottom: 2px solid var(--color-border-dark, #000);
+  margin-bottom: 1rem;
+}
+
+.dcc-class-builder .builder-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.dcc-class-builder .builder-step.step-basics,
+.dcc-class-builder .builder-step.step-preview {
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Skills step specific - needs scrollable list */
+.dcc-class-builder .builder-step.step-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dcc-class-builder .skills-list {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.dcc-class-builder .skill-editor {
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  border: 1px solid var(--color-border, rgba(0,0,0,.15));
+  border-radius: 4px;
+  background: var(--color-bg-alt, rgba(0,0,0,.03));
+}
+
+.dcc-class-builder .skill-header {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  align-items: center;
+}
+
+.dcc-class-builder .skill-header input[type="text"] {
+  flex: 1;
+}
+
+.dcc-class-builder .skill-actions {
+  display: flex;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.dcc-class-builder .skill-btn {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--color-border, rgba(0,0,0,.2));
+  background: var(--color-bg, #fff);
+  cursor: pointer;
+  border-radius: 3px;
+  line-height: 1;
+}
+
+.dcc-class-builder .skill-btn:hover {
+  background: var(--color-bg-alt, rgba(0,0,0,.05));
+}
+
+.dcc-class-builder .skill-btn.danger:hover {
+  background: rgba(255, 0, 0, 0.1);
+  border-color: rgba(255, 0, 0, 0.3);
+  color: #c00;
+}
+
+.dcc-class-builder .skill-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dcc-class-builder .skill-body textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 3rem;
+}
+
+.dcc-class-builder .skill-weight {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dcc-class-builder .skill-weight input[type="number"] {
+  width: 4rem;
+}
+
+.dcc-class-builder .form-group.buttons {
+  flex-shrink: 0;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border, rgba(0,0,0,.15));
+}
