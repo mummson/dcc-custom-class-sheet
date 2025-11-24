@@ -14,8 +14,8 @@
     }
   ],
   "url": "https://github.com/mummson/dcc-custom-class-sheet",
-  "manifest": "https://github.com/mummson/dcc-custom-class-sheet/releases/latest/download/module.json",
-  "download": "https://github.com/mummson/dcc-custom-class-sheet/releases/latest/download/dcc-custom-class-sheet.zip",
+  "download": "https://github.com/mummson/dcc-custom-class-sheet/releases/download/v1.0.0/dcc-custom-class-sheet-1.0.0.zip",
+  "manifest": "https://raw.githubusercontent.com/mummson/dcc-custom-class-sheet/master/module.json",
   "bugs": "https://github.com/mummson/dcc-custom-class-sheet/issues",
   "changelog": "https://github.com/mummson/dcc-custom-class-sheet/blob/main/CHANGELOG.md",
   "readme": "https://github.com/mummson/dcc-custom-class-sheet/blob/main/README.md",
