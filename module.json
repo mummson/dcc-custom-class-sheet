@@ -1,7 +1,7 @@
 {
   "id": "dcc-custom-class-sheet",
   "title": "DCC Custom Class Sheet",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Adds a selectable Custom Class sheet for DCC. Tab label is controlled by a (CUSTOMCLASS)Name skill. Lists prefixed skills like (Barbarian^10)Rage with tooltips and post-to-chat.",
   "compatibility": {
     "minimum": "13",

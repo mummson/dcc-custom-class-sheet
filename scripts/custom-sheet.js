@@ -88,6 +88,11 @@ export class DCCActorSheetCustom extends BaseSheet {
           group: "sheet", 
           label: "DCCCS.TabLabel",
           icon: "fa-solid fa-circle-exclamation"
+        },
+        { 
+          id: "effects", 
+          group: "sheet", 
+          label: "DCC.Effects"
         }
       ]
     }
@@ -128,6 +133,10 @@ export class DCCActorSheetCustom extends BaseSheet {
     notes: {
       id: 'notes',
       template: 'systems/dcc/templates/actor-partial-pc-notes.html'
+    },
+    effects: {
+      id: 'effects',
+      template: 'systems/dcc/templates/partial-effects.html'
     }
   }
 
