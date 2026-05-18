@@ -22,6 +22,8 @@ import { CustomClassBuilder } from "./class-builder.js";
 import { DCCActorSheetGeneric } from "/systems/dcc/module/actor-sheets-dcc.js";
 
 
+console.log(`[${MODULE_ID}] custom-sheet.js: module evaluating, DCCActorSheetGeneric=${typeof DCCActorSheetGeneric}`);
+
 /** A stable key for our tab id & dataset.tab value */
 const TAB_ID = "dccCustomClass";
 
@@ -114,12 +116,10 @@ export class DCCActorSheetCustom extends BaseSheet {
     return tabs;
   }  
   
-  /** Register our sheet for Player actors (v13-safe) */
+  /** Register our sheet for Player actors */
   static register() {
-    // v13-safe, non-deprecated namespace
-    const { Actors } = foundry.documents.collections;
-
     try {
+      const { Actors } = foundry.documents.collections;
       Actors.registerSheet(MODULE_ID, DCCActorSheetCustom, {
         types: [REGISTER_TYPE],  // "Player"
         label: "Custom Class",
@@ -277,7 +277,21 @@ export class DCCActorSheetCustom extends BaseSheet {
   }
 }
 
-// Register our sheet when the game is ready (sheet registry is loaded by then)
-Hooks.once("init", () => {
+let _registered = false;
+function _registerOnce() {
+  if (_registered) return;
+  _registered = true;
   DCCActorSheetCustom.register();
+}
+
+console.log(`[${MODULE_ID}] custom-sheet.js: registering hooks`);
+Hooks.once("init", () => {
+  console.log(`[${MODULE_ID}] custom-sheet.js: init hook fired`);
+  _registerOnce();
+});
+Hooks.once("setup", () => {
+  if (!_registered) {
+    console.warn(`[${MODULE_ID}] custom-sheet.js: init hook missed, registering in setup`);
+    _registerOnce();
+  }
 });

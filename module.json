@@ -33,10 +33,7 @@
     ]
   },
   "esmodules": [
-    "scripts/init.js",
-    "scripts/utils.js",
-    "scripts/custom-sheet.js",
-    "scripts/class-builder.js"
+    "scripts/custom-sheet.js"
   ],
   "styles": [
     "styles/custom-class.css"
