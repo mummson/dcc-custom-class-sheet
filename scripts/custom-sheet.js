@@ -83,30 +83,19 @@ export class DCCActorSheetCustom extends BaseSheet {
   static CLASS_TABS = {
     sheet: {
       tabs: [
-        { 
-          id: "customClass", 
-          group: "sheet", 
+        {
+          id: "customClass",
+          group: "sheet",
           label: "DCCCS.TabLabel",
           icon: "fa-solid fa-circle-exclamation"
-        },
-        { 
-          id: "effects", 
-          group: "sheet", 
-          label: "DCC.Effects"
         }
       ]
     }
   }
 
-  static get defaultOptions() {
-    const opts = super.defaultOptions;
-    // Do not change existing options; we only want to make sure tabs are enabled
-    // and our classes are added for styling isolation.
-    const merged = foundry.utils.mergeObject(opts, {
-      classes: (opts.classes || []).concat(["dcc-custom-class-sheet"]),
-    });
-    return merged;
-  }
+  static DEFAULT_OPTIONS = {
+    classes: ["dcc-custom-class-sheet"],
+  };
 
   /** @inheritDoc */
   static PARTS = {
@@ -154,12 +143,6 @@ export class DCCActorSheetCustom extends BaseSheet {
       const icon = getCustomClassIcon(this.actor);
       customTab.label = label || game.i18n?.localize?.("DCCCS.TabLabel") || "Custom Class";
       customTab.icon = icon;
-    }
-    
-    // Ensure our panel is configured to use our PART
-    if (!tabs.panels) tabs.panels = {};
-    if (!tabs.panels.customClass) {
-      tabs.panels.customClass = { id: "customClass", parts: ["customClass"] };
     }
     
     return tabs;

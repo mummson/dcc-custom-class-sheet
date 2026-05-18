@@ -5,7 +5,7 @@
   "description": "Adds a selectable Custom Class sheet for DCC. Tab label is controlled by a (CUSTOMCLASS)Name skill. Lists prefixed skills like (Barbarian^10)Rage with tooltips and post-to-chat.",
   "compatibility": {
     "minimum": "13",
-    "verified": "13"
+    "verified": "14"
   },
   "authors": [
     {

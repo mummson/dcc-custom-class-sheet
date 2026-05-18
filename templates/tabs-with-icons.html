@@ -1,8 +1,18 @@
 {{!-- Sheet Tab Navigation with Icon Support --}}
-<nav class="sheet-tabs tabs">
-  {{#each tabs as |tab|}}
-    <a class="{{tab.cssClass}}" data-action="tab" data-group="{{tab.group}}" data-tab="{{tab.id}}" data-tooltip="{{localize tab.tooltip}}">
-      {{#if tab.icon}}<i class="{{tab.icon}}"></i> {{/if}}{{localize tab.label}}
-    </a>
-  {{/each}}
+<nav class="sheet-tabs tabs responsive-tabs">
+  <div class="tabs-container">
+    {{#each tabs as |tab|}}
+      <a class="{{tab.cssClass}}" data-action="tab" data-group="{{tab.group}}" data-tab="{{tab.id}}" data-tooltip="{{localize tab.tooltip}}">
+        {{#if tab.icon}}<i class="{{tab.icon}}"></i> {{/if}}{{localize tab.label}}
+      </a>
+    {{/each}}
+  </div>
+  <div class="tabs-overflow">
+    <button type="button" class="tabs-overflow-button" data-tooltip="{{localize 'DCC.MoreTabs'}}">
+      <i class="fas fa-ellipsis-h"></i>
+    </button>
+    <div class="tabs-overflow-menu">
+      {{!-- Overflow tabs populated by DCC system JavaScript --}}
+    </div>
+  </div>
 </nav>
