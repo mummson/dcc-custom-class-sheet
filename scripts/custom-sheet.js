@@ -25,40 +25,6 @@ import { DCCActorSheetGeneric } from "/systems/dcc/module/actor-sheets-dcc.js";
 /** A stable key for our tab id & dataset.tab value */
 const TAB_ID = "dccCustomClass";
 
-/**
- * Resolve a sane base sheet class from the system's Player registry.
- * Prefer a "Generic" sheet if present; else the first entry; else fallback to ActorSheet.
- * Returns { cls, type: "Player" }.
- */
-function resolvePlayerBaseSheet() {
-  const reg = CONFIG?.Actor?.sheetClasses ?? {};
-  const player = reg["Player"];
-  if (player) {
-    // Flatten scopes (system, core, module scopes)
-    const entries = [];
-    for (const scope of Object.values(player)) {
-      for (const entry of Object.values(scope)) entries.push(entry);
-    }
-    // Prefer id/label that hints "Generic"
-    let chosen = entries.find(e =>
-      /generic/i.test(e?.id ?? "") || /generic/i.test(e?.label ?? "")
-    );
-    if (!chosen) chosen = entries[0];
-    if (chosen?.cls) return { cls: chosen.cls, type: "Player" };
-  }
-  // Fallback: anything default anywhere
-  const regAll = CONFIG?.Actor?.sheetClasses ?? {};
-  for (const [type, scopes] of Object.entries(regAll)) {
-    for (const scope of Object.values(scopes)) {
-      for (const entry of Object.values(scope)) {
-        if (entry?.default && entry?.cls) return { cls: entry.cls, type };
-      }
-    }
-  }
-  // Last resort
-  return { cls: ActorSheet, type: "Player" };
-}
-
 // We extend the DCC system's sheet directly
 const BaseSheet = DCCActorSheetGeneric;  // PC "Generic" sheet (shows abilities, modern tabs)
 const REGISTER_TYPE = "Player";
