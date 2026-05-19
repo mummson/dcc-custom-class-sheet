@@ -24,11 +24,16 @@ const REGISTER_TYPE = "Player";
 
 console.log(`[${MODULE_ID}] custom-sheet.js: module evaluating`);
 
-Hooks.once("init", () => {
-  console.log(`[${MODULE_ID}] custom-sheet.js: init hook fired`);
+// Must use "ready" hook, not "init" or "setup":
+// Foundry v14 defers all registerSheet calls to #pending until initializeSheets() runs,
+// which happens between the setup and ready hooks. Only at ready time is
+// CONFIG.Actor.sheetClasses populated and game.ready === true (so our own registerSheet
+// call applies immediately rather than being queued again).
+Hooks.once("ready", () => {
+  console.log(`[${MODULE_ID}] custom-sheet.js: ready hook fired`);
 
   try {
-    // DCC system registers its sheets during its own init hook, which runs before module init hooks
+    // By ready time, DCC's deferred registerSheet calls have been flushed into CONFIG
     const BaseClass = CONFIG.Actor.sheetClasses?.Player?.["dcc.DCCActorSheetGeneric"]?.cls;
     if (!BaseClass) {
       console.error(`[${MODULE_ID}] DCCActorSheetGeneric not found in CONFIG.Actor.sheetClasses.Player — aborting`);
