@@ -1,7 +1,7 @@
 /* DCC Custom Class Sheet — minimal, theme-friendly styles
    Keep colors neutral so system themes remain in control. */
 
-.dcc-custom-class-sheet .ccc-wrap {
+.dcc-custom-class-sheet .ccc-wrap.active {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;

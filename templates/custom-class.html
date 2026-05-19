@@ -12,7 +12,7 @@
     hasGroups: boolean
 --}}
 
-<section class="tab ccc-wrap" data-group="sheet" data-tab="customClass">
+<section class="tab ccc-wrap {{tabs.customClass.cssClass}}" data-group="sheet" data-tab="customClass">
   {{#if hasGroups}}
     {{#each groups as |group|}}
       <div class="box-title">{{group.className}}</div>
