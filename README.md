@@ -3,7 +3,7 @@ A Foundry VTT module for the Dungeon Crawl Classics system that adds a **Custom 
 
 ![Foundry Version](https://img.shields.io/badge/Foundry-v13-informational)
 ![System](https://img.shields.io/badge/System-DCC-blue)
-![License](https://img.shields.io/github/license/YOUR-USERNAME/dcc-custom-class-sheet)
+![License](https://img.shields.io/github/license/mummson/dcc-custom-class-sheet)
 
 ## Features
 ### Custom Class Sheet
@@ -36,7 +36,7 @@ A Foundry VTT module for the Dungeon Crawl Classics system that adds a **Custom 
 1. Open Foundry VTT
 2. Go to **Add-on Modules** tab
 3. Click **Install Module**
-4. Paste this URL: `https://github.com/YOUR-USERNAME/dcc-custom-class-sheet/releases/latest/download/module.json`
+4. Paste this URL: `https://raw.githubusercontent.com/mummson/dcc-custom-class-sheet/master/module.json`
 5. Click **Install**
 
 ## Quick Start
