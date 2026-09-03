@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Class templates compendium
 - CSV/JSON bulk import for skills
 
+## [1.1.1] - 2026-09-03
+
+### Fixed
+- Skill icon in the "post to chat" card no longer stretches non-square images; it now crops to fill the thumbnail instead of distorting it.
+- Rolling a class-prefixed skill (`(Class^Weight)Name`) no longer posts the raw prefixed name to chat — the flavor text and Modifiers breakdown now show the clean skill name.
+- README: corrected placeholder GitHub username and a manual-install URL that pointed at a nonexistent release asset.
+
 ## [1.0.0] - 2024-11-13
 
 ### Added
