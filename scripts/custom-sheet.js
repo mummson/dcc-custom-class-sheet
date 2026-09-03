@@ -16,6 +16,7 @@ import {
   getCustomClassLabel,
   getCustomClassIcon,
   postSkillToChat,
+  stripSkillPrefixFromChatMessage,
 } from "./utils.js";
 import { CustomClassBuilder } from "./class-builder.js";
 
@@ -23,6 +24,14 @@ const TAB_ID = "dccCustomClass";
 const REGISTER_TYPE = "Player";
 
 console.log(`[${MODULE_ID}] custom-sheet.js: module evaluating`);
+
+// The DCC system labels skill-check chat messages with the skill item's raw
+// name, which for our class-prefixed skills includes the (Class^Weight)
+// syntax. Clean it up on any chat message the DCC system creates for one of
+// our prefixed skills.
+Hooks.on("preCreateChatMessage", (message) => {
+  stripSkillPrefixFromChatMessage(message);
+});
 
 // Must use "ready" hook, not "init" or "setup":
 // Foundry v14 defers all registerSheet calls to #pending until initializeSheets() runs,

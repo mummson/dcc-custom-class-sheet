@@ -165,7 +165,7 @@ export async function postSkillToChat(item, displayName) {
   const content = `
     <div class="dcc-skill-chat-message">
       <div class="flexrow" style="align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; border-bottom: 2px solid var(--color-border-dark); padding-bottom: 0.25rem;">
-        <img src="${img}" alt="${name}" width="36" height="36" style="border: none; flex-shrink: 0;" />
+        <img src="${img}" alt="${name}" width="36" height="36" style="border: none; flex-shrink: 0; object-fit: cover;" />
         <h3 style="margin: 0; flex: 1; font-size: 1.1em;">${name}</h3>
       </div>
       <div class="skill-description">${html}</div>
@@ -177,6 +177,34 @@ export async function postSkillToChat(item, displayName) {
     content,
     flags: { core: { canPopout: true } }
   });
+}
+
+/**
+ * The DCC system labels skill-check chat messages using the skill item's
+ * raw name (it has no concept of our (Class^Weight)Name prefix syntax).
+ * Strip the prefix back out of the flavor/content of messages tagged
+ * with one of our prefixed skill ids.
+ * @param {ChatMessage} message
+ */
+export function stripSkillPrefixFromChatMessage(message) {
+  const skillId = message.flags?.dcc?.SkillId;
+  if (!skillId) return;
+
+  const parsed = parsePrefixedSkillName(skillId);
+  if (!parsed) return;
+
+  const pattern = new RegExp(skillId.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g");
+
+  const updates = {};
+  if (typeof message.flavor === "string" && message.flavor.includes(skillId)) {
+    updates.flavor = message.flavor.replace(pattern, parsed.skillName);
+  }
+  if (typeof message.content === "string" && message.content.includes(skillId)) {
+    updates.content = message.content.replace(pattern, parsed.skillName);
+  }
+  if (Object.keys(updates).length) {
+    message.updateSource(updates);
+  }
 }
 
 /**
