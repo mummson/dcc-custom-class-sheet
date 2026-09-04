@@ -2,6 +2,7 @@
 ![Foundry Version](https://img.shields.io/badge/Foundry-v14-informational)
 ![System](https://img.shields.io/badge/System-DCC-blue)
 ![License](https://img.shields.io/github/license/mummson/dcc-custom-class-sheet)
+
 A Foundry VTT module for the Dungeon Crawl Classics system that adds a **Custom Class character sheet** with dynamic tab labels, grouped skills, and a visual class builder wizard.
 
 ## Features
